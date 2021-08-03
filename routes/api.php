@@ -22,4 +22,4 @@ Route::apiResources([
     'views' => ViewController::class,
 ]);
 Route::get('userReport/{userId}/{postId}',[PostController::class,'userReport']);
-Route::get('postReport/{userId}',[PostController::class,'postReport']);
+Route::post('postReport',[PostController::class,'postReport']);

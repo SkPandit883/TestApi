@@ -128,13 +128,13 @@ class PostController extends Controller
         }
     }
 
-    public function postReport($userId){
+    public function postReport(Request $request){
         try {
-            $post=Post::withCount('comments as total_comments')->withSum('views as total_views','view')->where('user_id',$userId)->get();
-            return response()->json([
-                'status' => 1,
-                'data' =>$post,
-                'message' => 'postReport'], 200);
+                $post=Post::withCount('comments as total_comments')->withSum('views as total_views','view')->where('user_id',$request->userId)->get();
+                return response()->json([
+                    'status' => 1,
+                    'data' =>$post,
+                    'message' => 'postReport'], 200);
         } catch (\Throwable $th) {
                 return response()->json(['status' => 0, 'error' => $th->getMessage()], 200);
         }
