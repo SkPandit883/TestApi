@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ViewController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::apiResources([
+    'posts' => PostController::class,
+    'comments' => CommentController::class,
+    'views' => ViewController::class,
+]);
+Route::get('userReport/{userId}/{postId}',[PostController::class,'userReport']);
+Route::get('postReport/{userId}',[PostController::class,'postReport']);
