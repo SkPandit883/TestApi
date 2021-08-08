@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ViewController;
+use App\Http\Controllers\CacheController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,3 +24,4 @@ Route::apiResources([
 ]);
 Route::get('userReport/{userId}/{postId}',[PostController::class,'userReport']);
 Route::post('postReport',[PostController::class,'postReport']);
+Route::get('testCache/{name}',[CacheController::class,'testCache']);
