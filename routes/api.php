@@ -24,4 +24,4 @@ Route::apiResources([
 ]);
 Route::get('userReport/{userId}/{postId}',[PostController::class,'userReport']);
 Route::post('postReport',[PostController::class,'postReport']);
-Route::get('testCache/{name}',[CacheController::class,'testCache']);
+Route::get('getUserFromCache',[CacheController::class,'getUserFromCache']);
