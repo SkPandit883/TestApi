@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Comment;
 use App\Models\View;
 use App\Models\User;
+use Laravel\Scout\Searchable;
+
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory,Searchable;
     protected $guarded=[];
 
     public function comments(){
@@ -20,5 +22,12 @@ class Post extends Model
     }
     public function user(){
         return $this->belongsTo(User::class,'user_id');
+    }
+    
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+        // Customize the data array...
+        return $array;
     }
 }
